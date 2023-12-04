@@ -27,3 +27,18 @@ window.addEventListener("load", function () {
   pauseEl.style.display = "none";
   muteEl.style.display = "none";
 });
+
+// Functions
+
+const playAudio = () => {
+  audio.play();
+  playEl.style.display = "none";
+  pauseEl.style.display = "block";
+};
+
+
+// Event Listener Action Button Controllers
+
+playEl.addEventListener("click", () => {
+  playAudio();
+});
