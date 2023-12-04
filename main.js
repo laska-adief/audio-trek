@@ -56,6 +56,12 @@ const muteAudio = () => {
   unmuteEl.style.display = "none";
 };
 
+const unmuteAudio = () => {
+  audio.volume = 1;
+  muteEl.style.display = "none";
+  unmuteEl.style.display = "block";
+};
+
 // Event Listener Action Button Controllers
 
 playEl.addEventListener("click", () => {
@@ -76,4 +82,8 @@ forwardEl.addEventListener("click", () => {
 
 unmuteEl.addEventListener("click", () => {
   muteAudio();
+});
+
+muteEl.addEventListener("click", () => {
+  unmuteAudio();
 });
