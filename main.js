@@ -36,9 +36,18 @@ const playAudio = () => {
   pauseEl.style.display = "block";
 };
 
+const pauseAudio = () => {
+  audio.pause();
+  playEl.style.display = "block";
+  pauseEl.style.display = "none";
+};
 
 // Event Listener Action Button Controllers
 
 playEl.addEventListener("click", () => {
   playAudio();
+});
+
+pauseEl.addEventListener("click", () => {
+  pauseAudio();
 });
