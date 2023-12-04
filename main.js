@@ -50,6 +50,12 @@ const forwardAudio = () => {
   audio.currentTime += 10;
 };
 
+const muteAudio = () => {
+  audio.volume = 0;
+  muteEl.style.display = "block";
+  unmuteEl.style.display = "none";
+};
+
 // Event Listener Action Button Controllers
 
 playEl.addEventListener("click", () => {
@@ -66,4 +72,8 @@ backwardEl.addEventListener("click", () => {
 
 forwardEl.addEventListener("click", () => {
   forwardAudio();
+});
+
+unmuteEl.addEventListener("click", () => {
+  muteAudio();
 });
