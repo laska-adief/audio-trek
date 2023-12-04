@@ -22,3 +22,8 @@ let forwardEl = videControlsWrapper.querySelector('[data-audio="forward"]');
 let timeControlWrapper = document.querySelector(".time-controls-wrapper");
 let currTimeEl = timeControlWrapper.querySelector('[f-data-video="current-time"]');
 let durationEl = timeControlWrapper.querySelector('[f-data-video="duration"]');
+
+window.addEventListener("load", function () {
+  pauseEl.style.display = "none";
+  muteEl.style.display = "none";
+});
