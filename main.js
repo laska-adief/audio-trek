@@ -62,6 +62,16 @@ const unmuteAudio = () => {
   unmuteEl.style.display = "block";
 };
 
+const handleRangeVolume = () => {
+  let volumeRange = volumeRangeEl.value;
+  audio.volume = volumeRange;
+  if (audio.volume === 0) {
+    muteAudio();
+  } else {
+    unmuteAudio();
+  }
+};
+
 // Event Listener Action Button Controllers
 
 playEl.addEventListener("click", () => {
@@ -86,4 +96,8 @@ unmuteEl.addEventListener("click", () => {
 
 muteEl.addEventListener("click", () => {
   unmuteAudio();
+});
+
+volumeRangeEl.addEventListener("input", () => {
+  handleRangeVolume();
 });
