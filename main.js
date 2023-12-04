@@ -1,0 +1,24 @@
+// parent element
+let wrapperEl = document.querySelector(".video-controls-wrapper");
+
+// source audio
+let audioSource = wrapperEl.getAttribute("audio-src");
+let audio = new Audio(audioSource);
+
+// volume control
+let volumeControlWrapper = wrapperEl.querySelector(".volume-control-wrpaper");
+let volumeRangeEl = volumeControlWrapper.querySelector('[data-audio="volume"]');
+let unmuteEl = volumeControlWrapper.querySelector('[data-audio="unmute"]');
+let muteEl = volumeControlWrapper.querySelector('[data-audio="mute"]');
+
+// actions controls
+let videControlsWrapper = document.querySelector(".video-controls");
+let playEl = videControlsWrapper.querySelector('[data-audio="play"]');
+let pauseEl = videControlsWrapper.querySelector('[data-audio="pause"]');
+let backwardEl = videControlsWrapper.querySelector('[data-audio="backward"]');
+let forwardEl = videControlsWrapper.querySelector('[data-audio="forward"]');
+
+// time controls
+let timeControlWrapper = document.querySelector(".time-controls-wrapper");
+let currTimeEl = timeControlWrapper.querySelector('[f-data-video="current-time"]');
+let durationEl = timeControlWrapper.querySelector('[f-data-video="duration"]');
