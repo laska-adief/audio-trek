@@ -46,6 +46,10 @@ const backwardAudio = () => {
   audio.currentTime -= 10;
 };
 
+const forwardAudio = () => {
+  audio.currentTime += 10;
+};
+
 // Event Listener Action Button Controllers
 
 playEl.addEventListener("click", () => {
@@ -58,4 +62,8 @@ pauseEl.addEventListener("click", () => {
 
 backwardEl.addEventListener("click", () => {
   backwardAudio();
+});
+
+forwardEl.addEventListener("click", () => {
+  forwardAudio();
 });
