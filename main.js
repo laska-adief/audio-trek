@@ -26,7 +26,23 @@ let durationEl = timeControlWrapper.querySelector('[f-data-video="duration"]');
 window.addEventListener("load", function () {
   pauseEl.style.display = "none";
   muteEl.style.display = "none";
+
+  const durationAudio = audio.duration;
+  const durationText = formattedDuration(durationAudio);
+  durationEl.innerHTML = durationText;
 });
+
+const formattedDuration = (duration) => {
+  let hours = Math.floor(duration / 3600);
+  let minutes = Math.floor((duration % 3600) / 60);
+  let seconds = Math.floor(duration % 60);
+
+  let formattedHours = hours < 10 ? "0" + hours : hours;
+  let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+  let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+  return formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
+};
 
 // Functions
 
@@ -100,4 +116,10 @@ muteEl.addEventListener("click", () => {
 
 volumeRangeEl.addEventListener("input", () => {
   handleRangeVolume();
+});
+
+audio.addEventListener("timeupdate", () => {
+  const currAudioTime = audio.currentTime;
+  const formattedCurrentTime = formattedDuration(currAudioTime);
+  currTimeEl.innerHTML = formattedCurrentTime;
 });
