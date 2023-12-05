@@ -70,9 +70,9 @@ const formattedDuration = (duration) => {
   let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
   let durationValue = formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
-  let defaultDuration = '00:00:00';
+  let defaultDuration = "00:00:00";
 
-  return typeof formattedSeconds === "number" ? durationValue : defaultDuration;
+  return typeof formattedSeconds > "00" ? durationValue : defaultDuration;
 };
 
 // Functions
@@ -157,5 +157,5 @@ audio.addEventListener("timeupdate", () => {
   currTimeEl.innerHTML = formattedCurrentTime;
 
   let progressWidth = (currAudioTime / audioDuration) * 100;
-  progressEl.style.width = progressWidth + '%';
+  progressEl.style.width = progressWidth + "%";
 });
