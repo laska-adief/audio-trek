@@ -36,10 +36,7 @@ window.addEventListener("load", function () {
   pauseEl.style.display = "none";
   muteEl.style.display = "none";
 
-  const durationAudio = audio.duration;
-  const durationText = formattedDuration(durationAudio);
-  durationEl.innerHTML = durationText;
-  currTimeEl.innerHTML = '00:00:00';
+  currTimeEl.innerHTML = "00:00:00";
 });
 
 const handleErrorAudio = (event) => {
@@ -49,16 +46,20 @@ const handleErrorAudio = (event) => {
 };
 
 const handleLoadingAudio = (event) => {
-  if(event?.returnValue && event?.type === 'canplaythrough') {
-    loadingEl.style.display = 'none';
-    }
+  if (event?.returnValue && event?.type === "canplaythrough") {
+    loadingEl.style.display = "none";
+
+    // set audio duration
+    const durationAudio = audio.duration;
+    const durationText = formattedDuration(durationAudio);
+    durationEl.innerHTML = durationText;
+  }
 };
 
 if (audio) {
   audio.addEventListener("error", handleErrorAudio);
   audio.addEventListener("canplaythrough", handleLoadingAudio);
 }
-
 
 const formattedDuration = (duration) => {
   let hours = Math.floor(duration / 3600);
