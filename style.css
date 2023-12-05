@@ -6,3 +6,11 @@
   background-color: skyblue;
   height: 100% !important;
 }
+
+.error-container {
+  margin-top: 1rem;
+}
+
+.error {
+  color: red;
+}
