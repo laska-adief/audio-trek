@@ -26,6 +26,9 @@ let durationEl = timeControlWrapper.querySelector('[f-data-video="duration"]');
 // progress bar
 let progressEl = document.querySelector('[f-data-video="progress"]');
 
+// error
+let errorEl = document.querySelector('#error');
+
 window.addEventListener("load", function () {
   pauseEl.style.display = "none";
   muteEl.style.display = "none";
@@ -34,6 +37,17 @@ window.addEventListener("load", function () {
   const durationText = formattedDuration(durationAudio);
   durationEl.innerHTML = durationText;
 });
+
+const handleErrorAudio = (event) => {
+  if(event?.returnValue && event?.type === 'error') {
+    errorEl.innerHTML = 'Audio Source Error'
+  }
+}
+
+if(audio) {
+  audio.addEventListener('error', handleErrorAudio)
+}
+
 
 const formattedDuration = (duration) => {
   let hours = Math.floor(duration / 3600);
@@ -44,7 +58,10 @@ const formattedDuration = (duration) => {
   let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
   let formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
 
-  return formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
+  let durationValue = formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
+  let defaultDuration = '00:00:00';
+
+  return typeof formattedSeconds === Number ? durationValue : defaultDuration;
 };
 
 // Functions
