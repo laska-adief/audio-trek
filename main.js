@@ -23,6 +23,9 @@ let timeControlWrapper = document.querySelector(".time-controls-wrapper");
 let currTimeEl = timeControlWrapper.querySelector('[f-data-video="current-time"]');
 let durationEl = timeControlWrapper.querySelector('[f-data-video="duration"]');
 
+// progress bar
+let progressEl = document.querySelector('[f-data-video="progress"]');
+
 window.addEventListener("load", function () {
   pauseEl.style.display = "none";
   muteEl.style.display = "none";
@@ -120,6 +123,10 @@ volumeRangeEl.addEventListener("input", () => {
 
 audio.addEventListener("timeupdate", () => {
   const currAudioTime = audio.currentTime;
+  const audioDuration = audio.duration;
   const formattedCurrentTime = formattedDuration(currAudioTime);
   currTimeEl.innerHTML = formattedCurrentTime;
+
+  let progressWidth = (currAudioTime / audioDuration) * 100;
+  progressEl.style.width = progressWidth + '%';
 });
