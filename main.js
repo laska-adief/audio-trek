@@ -115,7 +115,8 @@ const handleRangeVolume = () => {
   if (audio.volume === 0) {
     muteAudio();
   } else {
-    unmuteAudio();
+    muteEl.style.display = "none";
+    unmuteEl.style.display = "block";
   }
 };
 
