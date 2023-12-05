@@ -29,6 +29,9 @@ let progressEl = document.querySelector('[f-data-video="progress"]');
 // error
 let errorEl = document.querySelector('#error');
 
+// loading
+let loadingEl = document.querySelector('[f-data-video="loading"]');
+
 window.addEventListener("load", function () {
   pauseEl.style.display = "none";
   muteEl.style.display = "none";
@@ -36,16 +39,24 @@ window.addEventListener("load", function () {
   const durationAudio = audio.duration;
   const durationText = formattedDuration(durationAudio);
   durationEl.innerHTML = durationText;
+  currTimeEl.innerHTML = '00:00:00';
 });
 
 const handleErrorAudio = (event) => {
-  if(event?.returnValue && event?.type === 'error') {
-    errorEl.innerHTML = 'Audio Source Error'
+  if (event?.returnValue && event?.type === "error") {
+    errorEl.innerHTML = "Audio Source Error";
   }
-}
+};
 
-if(audio) {
-  audio.addEventListener('error', handleErrorAudio)
+const handleLoadingAudio = (event) => {
+  if(event?.returnValue && event?.type === 'canplaythrough') {
+    loadingEl.style.display = 'none';
+    }
+};
+
+if (audio) {
+  audio.addEventListener("error", handleErrorAudio);
+  audio.addEventListener("canplaythrough", handleLoadingAudio);
 }
 
 
@@ -61,7 +72,7 @@ const formattedDuration = (duration) => {
   let durationValue = formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
   let defaultDuration = '00:00:00';
 
-  return typeof formattedSeconds === Number ? durationValue : defaultDuration;
+  return typeof formattedSeconds === "number" ? durationValue : defaultDuration;
 };
 
 // Functions
